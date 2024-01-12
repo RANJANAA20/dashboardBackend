@@ -58,4 +58,12 @@ public interface PlanRepo extends JpaRepository<Dataset, Integer>
     // active / inactive based on month
     @Query(value="select monthname(date_of_issue ) as month, sum(CASE WHEN status = 'Active' THEN 1 ELSE 0 end),sum(CASE WHEN status = 'Inactive' THEN 1 ELSE 0 end) from dataset GROUP BY MONTH ORDER BY monthname(date_of_issue)",nativeQuery = true)
     List<Object[]> custStatus();
+    
+    // revenue based on plan
+    @Query(value= "select  plan , sum(bill) from dataset group by plan",nativeQuery = true)
+    List<Object[]> planRevenue();
+    
+    // to count no.of.plans
+    @Query(value="select count(distinct plan) from dataset",nativeQuery = true)
+    Long plan();
 }

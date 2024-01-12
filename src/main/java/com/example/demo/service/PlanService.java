@@ -235,6 +235,46 @@ public class PlanService
 
 	    return sortedMap;
 	}
+
+	// revenue based on plan
+//	public Map<String, Long> planRev() 
+//	{
+//		List<Object[]> prList = pr.planRevenue();
+//		
+//		Map<String,Long> prMap = new HashMap<>();
+//		
+//		for(Object[] object : prList)
+//		{
+//			String prLabel = (String)object[0];
+//			
+//			Long prValues = (Long)object[1];
+//			
+//			prMap.put(prLabel, prValues);
+//			
+//		}
+//		return prMap;
+//	}
+	
+	public Map<String, BigDecimal> planRev() {
+	    List<Object[]> prList = pr.planRevenue();
+	    
+	    Map<String, BigDecimal> prMap = new HashMap<>();
+	    
+	    for(Object[] object : prList) {
+	        String prLabel = (String) object[0];
+	        BigDecimal prValues = (BigDecimal) object[1];
+	        prMap.put(prLabel, prValues);
+	    }
+	    return prMap;
+	}
+
+	// to count no.of.plans
+	public Long plan() 
+	{
+		return pr.plan();
+		
+	}
+
 }
 
 	

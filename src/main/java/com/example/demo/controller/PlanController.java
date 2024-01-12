@@ -154,5 +154,21 @@ public class PlanController
 		return ps.statusCount();
 	}
 	
+	// plan based revenue
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping("/planRev")
+	public Map<String,BigDecimal> planRev()
+	{
+		return ps.planRev();
+	}
+	
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/planCount")
+	public Long plan()
+	{
+		return ps.plan();
+	}
+	
 	
 }
